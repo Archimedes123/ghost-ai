@@ -11,11 +11,21 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
-interface EditorDialogProps {
-  /** Controlled open state. */
-  open?: boolean
-  /** Called when the open state should change. */
-  onOpenChange?: (open: boolean) => void
+/**
+ * Controlled/uncontrolled contract: either supply both `open` and
+ * `onOpenChange`, or neither. `open` without a handler would render a dialog
+ * that Esc, the overlay, and the close button cannot dismiss.
+ */
+type EditorDialogControlProps =
+  | {
+      /** Controlled open state. */
+      open: boolean
+      /** Called when the open state should change. */
+      onOpenChange: (open: boolean) => void
+    }
+  | { open?: undefined; onOpenChange?: undefined }
+
+interface EditorDialogBaseProps {
   /** Dialog heading. */
   title: React.ReactNode
   /** Optional supporting copy under the title. */
@@ -27,6 +37,8 @@ interface EditorDialogProps {
   /** Extra classes for the dialog panel. */
   className?: string
 }
+
+type EditorDialogProps = EditorDialogBaseProps & EditorDialogControlProps
 
 /**
  * Reusable dialog pattern for the editor. Composes the shadcn Dialog

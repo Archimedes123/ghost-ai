@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react"
+import { UserButton } from "@clerk/nextjs"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -35,7 +36,11 @@ export function EditorNavbar({
       {...props}
     >
       {/* Left */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
+        <span className="headline text-sm text-foreground select-none">
+          Ghost<span className="text-primary">AI</span>
+        </span>
+        <span aria-hidden className="h-5 w-px bg-border" />
         <Button
           type="button"
           variant="outline"
@@ -51,8 +56,10 @@ export function EditorNavbar({
       {/* Centre */}
       <div className="flex flex-1 items-center justify-center" />
 
-      {/* Right — reserved for later chapters */}
-      <div className="flex items-center gap-2" />
+      {/* Right — profile settings and logout via Clerk's default user menu */}
+      <div className="flex items-center gap-2">
+        <UserButton />
+      </div>
     </header>
   )
 }

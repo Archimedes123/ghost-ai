@@ -38,7 +38,9 @@ export function ProjectSidebar({
     >
       {/* Header */}
       <div className="flex h-12 shrink-0 items-center justify-between border-b border-border px-3">
-        <span className="text-sm font-medium">Projects</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+          Projects
+        </span>
         <Button
           type="button"
           variant="ghost"
@@ -56,8 +58,18 @@ export function ProjectSidebar({
         className="flex min-h-0 flex-1 flex-col gap-0 p-3"
       >
         <TabsList className="w-full">
-          <TabsTrigger value="my-projects">My Projects</TabsTrigger>
-          <TabsTrigger value="shared">Shared</TabsTrigger>
+          <TabsTrigger
+            value="my-projects"
+            className="text-xs uppercase tracking-[0.12em]"
+          >
+            My Projects
+          </TabsTrigger>
+          <TabsTrigger
+            value="shared"
+            className="text-xs uppercase tracking-[0.12em]"
+          >
+            Shared
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="my-projects" className="mt-3 min-h-0">
@@ -70,7 +82,10 @@ export function ProjectSidebar({
 
       {/* Footer */}
       <div className="shrink-0 border-t border-border p-3">
-        <Button type="button" className="w-full">
+        <Button
+          type="button"
+          className="w-full rounded-none text-xs font-bold uppercase tracking-[0.18em]"
+        >
           <Plus />
           New Project
         </Button>
@@ -81,7 +96,7 @@ export function ProjectSidebar({
 
 function SidebarEmptyState({ message }: { message: string }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border px-4 py-10 text-center text-sm text-muted-foreground">
+    <div className="flex flex-col items-center justify-center rounded-sm border border-dashed border-border px-4 py-10 text-center text-xs uppercase tracking-[0.14em] text-muted-foreground">
       {message}
     </div>
   )
